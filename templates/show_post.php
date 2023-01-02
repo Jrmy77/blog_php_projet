@@ -10,7 +10,7 @@ if (!empty($commentaires)) {
 	foreach ($commentaires as $commentaire) {
 		echo "<div class='commentaire'><p class='commentaire-author'>".$commentaire->auteur."<span class='commentaire-date'>".$commentaire->created_at."</span></p>";
 		echo "<p class='commentaire-content'>".$commentaire->contenu."</p>";
-		echo "<a class='commentaire-delete' href=delete_commentaire?id=" . $commentaire->id . ">Supprimer le commentaire</a></div>";
+		echo "<a class='commentaire-delete' href=delete_commentaire.php?id=" . $commentaire->id . ">Supprimer le commentaire</a></div>";
 	}
 }
 else {

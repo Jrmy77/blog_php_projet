@@ -7,7 +7,7 @@ function my_query($query)
 	mysqli_report(MYSQLI_REPORT_OFF);
 
 	if (empty($link))
-		$link = @mysqli_connect('localhost', 'root', '', 'blog');
+		$link = @mysqli_connect('localhost', 'root', 'root', 'blog');
 
 	if (!$link)
 		die("Failed to connect to MySQL: " . mysqli_connect_error());
@@ -60,7 +60,7 @@ class Commentaire
 	public function save()
 	{
 		// protéger les injections SQL
-		$link = mysqli_connect('localhost', 'root', '', 'blog');
+		$link = mysqli_connect('localhost', 'root', 'root', 'blog');
 		if (!$link) {
 			die("Failed to connect to MySQL: " . mysqli_connect_error());
 		}
@@ -124,7 +124,7 @@ class Post
 	public function save()
 	{
 		// protéger les injections SQL
-		$link = mysqli_connect('localhost', 'root', '', 'blog');
+		$link = mysqli_connect('localhost', 'root', 'root', 'blog');
 		if (!$link) {
 			die("Failed to connect to MySQL: " . mysqli_connect_error());
 		}
@@ -162,7 +162,7 @@ class Post
 	public static function getByAuthor($author)
 	{
 		// protéger les injections SQL
-		$link = mysqli_connect('localhost', 'root', '', 'blog');
+		$link = mysqli_connect('localhost', 'root', 'root', 'blog');
 		if (!$link) {
 			die("Failed to connect to MySQL: " . mysqli_connect_error());
 		}
