@@ -1,0 +1,36 @@
+.navbar {
+    font-size: 1.3rem;
+    padding: 40px 0;
+    &-list {
+        display: flex;
+        gap: 5%;
+    }
+    &-logo {
+        margin-right: auto;
+        font-weight: 700;
+    }
+    &-link {
+        text-decoration: none;
+        color: black;
+    }
+    &-item {
+        &_disabled {
+            position: relative;
+            .navbar-link {
+                color: gray;
+                cursor: not-allowed;
+            }
+            &::after {
+                content: 'soon';
+                position: absolute;
+                background: rgba(38, 141, 73, 0.4);
+                font-size: 0.8rem;
+                padding: 2px 5px;
+                border-radius: 5px;
+                color: white;
+                right: -25px;
+                top: -5px;
+            }
+        }
+    }
+}

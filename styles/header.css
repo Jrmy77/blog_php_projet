@@ -1,0 +1,34 @@
+.navbar {
+  font-size: 1.3rem;
+  padding: 40px 0;
+}
+.navbar-list {
+  display: flex;
+  gap: 5%;
+}
+.navbar-logo {
+  margin-right: auto;
+  font-weight: 700;
+}
+.navbar-link {
+  text-decoration: none;
+  color: black;
+}
+.navbar-item_disabled {
+  position: relative;
+}
+.navbar-item_disabled .navbar-link {
+  color: gray;
+  cursor: not-allowed;
+}
+.navbar-item_disabled::after {
+  content: "soon";
+  position: absolute;
+  background: rgba(101, 144, 190, 0.26);
+  font-size: 0.8rem;
+  padding: 4px 5px 2px 5px;
+  border-radius: 5px;
+  color: rgb(0, 123, 255);
+  right: -25px;
+  top: -10px;
+}/*# sourceMappingURL=header.css.map */
