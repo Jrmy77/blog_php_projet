@@ -39,14 +39,14 @@ function my_insert_id()
 
 class Commentaire
 {
-	// Propriétés de la classe qui correspondent aux champs de la table "commentaires"
+	// Propriétés de la classe
 	public $id;
 	public $auteur;
 	public $contenu;
 	public $created_at;
-	public $post_id; // Clé étrangère qui référence l'ID du post auquel le commentaire est lié
+	public $post_id; // Clé étrangère connecter à l'ID du post
 
-	// Constructeur qui permet de créer un nouvel objet Commentaire à partir des données de la base de données
+	// Constructeur
 	public function __construct(int $id, string $auteur, string $contenu, $created_at, int $post_id)
 	{
 		$this->id = $id;
@@ -56,7 +56,7 @@ class Commentaire
 		$this->post_id = $post_id;
 	}
 
-	// Méthode pour sauvegarder un nouveau commentaire dans la base de données
+	// Méthode pour add un commentaire à la bdd 
 	public function save()
 	{
 		// protéger les injections SQL
@@ -74,7 +74,7 @@ class Commentaire
 		$this->id = my_insert_id();
 	}
 
-	// Méthode pour récupérer un commentaire en particulier à partir de son ID
+	// function pour récupérer un commentaire 
 	public static function getById($id)
 	{
 		$query = "SELECT * FROM commentaires WHERE id = $id";
@@ -82,7 +82,7 @@ class Commentaire
 		return new Commentaire($result[0]['id'], $result[0]['auteur'], $result[0]['contenu'], $result[0]['created_at'], $result[0]['post_id']);
 	}
 
-	// Méthode pour récupérer tous les commentaires liés à un post en particulier
+	// function pour récupérer tous les com d'un post
 	public static function getAllForPost(int $post_id)
 	{
 		$query = "SELECT * FROM commentaires WHERE post_id = $post_id";
@@ -94,7 +94,7 @@ class Commentaire
 		return $commentaires;
 	}
 
-	//Méthode pour supprimer un commentaire
+	//function pour supprimer un commentaire
 	public function delete()
 	{
 		$query = "DELETE FROM commentaires WHERE id = $this->id";
@@ -105,13 +105,13 @@ class Commentaire
 
 class Post
 {
-	// Propriétés de la classe qui correspondent aux champs de la table "posts"
+	// Propriétés
 	public $id;
 	public $auteur;
 	public $contenu;
 	public $created_at;
 
-	// Constructeur qui permet de créer un nouvel objet Post à partir des données de la base de données
+	// Constructeur
 	public function __construct(int $id, string $auteur, string $contenu, $created_at)
 	{
 		$this->id = $id;
@@ -120,7 +120,7 @@ class Post
 		$this->created_at = $created_at;
 	}
 
-	// Méthode pour sauvegarder un nouveau post dans la base de données
+	// function pour add un nouveau post
 	public function save()
 	{
 		// protéger les injections SQL
@@ -131,13 +131,13 @@ class Post
 		$auteur = mysqli_real_escape_string($link, $this->auteur);
 		$contenu = mysqli_real_escape_string($link, $this->contenu);
 
-		// La requête
+		// requête
 		$query = "INSERT INTO posts (auteur, contenu, created_at) VALUES ('$auteur', '$contenu', '$this->created_at')";
 		my_query($query);
 		$this->id = my_insert_id();
 	}
 
-	// Méthode pour récupérer un post en particulier à partir de son ID
+	// function pour récupérer un post
 	public static function getById($id)
 	{
 		$query = "SELECT * FROM posts WHERE id = $id";
@@ -146,7 +146,7 @@ class Post
 		return new Post($row['id'], $row['auteur'], $row['contenu'], $row['created_at']);
 	}
 
-	// Méthode pour récupérer tous les posts de la base de données
+	// function pour récupérer tous les posts
 	public static function getAll()
 	{
 		$query = "SELECT * FROM posts";
@@ -158,7 +158,7 @@ class Post
 		return $posts;
 	}
 
-	// Méthode pour récupérer tous les posts de la base de données d'un auteur
+	// function pour récupérer tous les posts d'un auteur
 	public static function getByAuthor($author)
 	{
 		// protéger les injections SQL
@@ -168,7 +168,7 @@ class Post
 		}
 		$auteur = mysqli_real_escape_string($link, $author);
 
-		// La requête
+		//  requête
 		$query = "SELECT * FROM posts WHERE auteur = '$auteur'";
 		$result = my_query($query);
 		$posts = [];
@@ -178,7 +178,7 @@ class Post
 		return $posts;
 	}
 
-	// Méthode pour supprimer un post existant
+	// function pour supprimer un post
 	public function delete()
 	{
 		$query = "DELETE FROM posts WHERE id = $this->id";

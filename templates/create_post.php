@@ -1,4 +1,4 @@
-
+<!-- Method post pour récupérer les valeurs qui sont dans les input -->
 <a class="button-return" href="index.php">< RETOUR</a>
 
 

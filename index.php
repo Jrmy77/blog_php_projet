@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="styles/reset.css">
 	<link rel="stylesheet" href="styles/fonts.css">
 	<link rel="stylesheet" href="styles/main.css">
-	<title>Blog</title>
+	<title>LeMondeEstMechant</title>
 </head>
 <body>
 

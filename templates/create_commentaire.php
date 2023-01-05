@@ -1,3 +1,4 @@
+<!-- Method post pour récupérerles valeurs qui sont dans les input -->
 <form class="form-commentaire" method="post">
 	<label class="form-commentaire_label" for="auteur">Nom</label><br>
 	<input class="form-commentaire_input" type="text" id="auteur" name="auteur" required autocomplete='off'><br>
